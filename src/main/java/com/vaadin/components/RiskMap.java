@@ -5,6 +5,8 @@ import com.vaadin.addon.charts.model.*;
 import com.vaadin.addon.charts.model.style.SolidColor;
 import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.backend.Risk;
+import com.vaadin.data.provider.DataProvider;
+import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.shared.ui.slider.SliderOrientation;
 import com.vaadin.ui.*;
@@ -16,6 +18,7 @@ public class RiskMap extends HorizontalLayout {
     private Slider slider;
     private Panel panel;
     private Grid<Risk> grid;
+    private ListDataProvider<Risk> dataProvider;
 
     public RiskMap(){
         setWidth("100%");
@@ -27,14 +30,15 @@ public class RiskMap extends HorizontalLayout {
         addChart();
         Button button = new Button("");
         button.setIcon(VaadinIcons.REFRESH);
-        button.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
         VerticalLayout layout = new VerticalLayout();
+        button.setStyleName(ValoTheme.BUTTON_FRIENDLY);
         layout.addComponent(button);
         layout.setHeight("100%");
-        button.setDescription("Обновить карту рисков");
+        button.setDescription("Обновить карту рисков и таблицу");
         button.addClickListener(event -> {
             addChart();
             refreshChart();
+            refreshGrid();
         });
         slider = new Slider(1, 100);
         slider.setOrientation(SliderOrientation.VERTICAL);
@@ -50,13 +54,29 @@ public class RiskMap extends HorizontalLayout {
         setComponentAlignment(layout, Alignment.TOP_CENTER);
 
         grid = new Grid<>(Risk.class);
-        grid.setDataProvider(DataProviderHelper.getDataProvider());
 
         grid.setWidth("100%");
         grid.setHeight("100%");
+        grid.setCaption("Критические риски");
+
+        for(Grid.Column c: grid.getColumns())
+        {
+            c.setResizable(false);
+        }
+
+        addComponent(grid);
+        setExpandRatio(grid, 6);
+
+
+
+
+    }
+
+    public void refreshGrid(){
+        dataProvider = DataProvider.ofCollection(DataProviderHelper.getListOfRisk());
+        grid.setDataProvider(dataProvider);
 
         grid.removeAllColumns();
-        grid.setCaption("Критические риски");
 
         grid.addColumn("id").setCaption("№");
         grid.addColumn("name")
@@ -66,18 +86,13 @@ public class RiskMap extends HorizontalLayout {
         grid.addColumn("impact").setCaption("Воздействие");
         grid.addColumn("level").setCaption("Уровень риска");
 
-        for(Grid.Column c: grid.getColumns())
-        {
-            c.setResizable(false);
-        }
-        setSpacing(false);
-        addComponent(grid);
-        setExpandRatio(grid, 6);
+        dataProvider.setFilter(risk -> filterRisk(risk));
 
     }
 
-    public void refreshGrid(){
-        
+    private boolean filterRisk(Risk risk){
+        if(risk.getLevel() >= slider.getValue()) return true;
+        else return false;
     }
 
     public void addChart(){

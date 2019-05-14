@@ -8,6 +8,7 @@ public class Risk {
     private Integer probability;
     private Integer impact;
     private Integer level;
+    private boolean isCritical;
 
 
     public Risk(int id, String name, String description, int probability, int impact) {
@@ -74,5 +75,9 @@ public class Risk {
     }
 
     public void setLevel(Integer level) {this.level = level;}
+
+    public boolean isCritical() { return isCritical; }
+
+    public void setCritical(boolean critical) { isCritical = critical; }
 
 }
