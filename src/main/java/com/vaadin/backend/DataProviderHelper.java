@@ -3,12 +3,13 @@ package com.vaadin.backend;
 import com.vaadin.data.provider.DataProvider;
 import com.vaadin.data.provider.ListDataProvider;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataProviderHelper {
 
-
+    private static String projectName = "my_project";
     private static List<Risk> listOfRisk;
     private static ListDataProvider<Risk>  RiskDataProvider;
     public static void InitProvider(){
@@ -58,5 +59,13 @@ public class DataProviderHelper {
     }
     public static int getRiskCount(){
         return listOfRisk.size();
+    }
+
+    public static String getProjectName() {
+        return projectName;
+    }
+
+    public static void setProjectName(String projectName) {
+        DataProviderHelper.projectName = projectName;
     }
 }

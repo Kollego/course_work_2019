@@ -4,9 +4,7 @@ import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 
 public class InitControl extends CustomComponent implements View {
 
@@ -22,15 +20,27 @@ public class InitControl extends CustomComponent implements View {
 
     void createElements(){
         layout = new VerticalLayout();
+
+
+
+        TextField projectNameField = new TextField("Название проекта");
+        projectNameField.addValueChangeListener(event -> {
+           if(event.getValue() != "") DataProviderHelper.setProjectName(event.getValue());
+           else DataProviderHelper.setProjectName("Проект");
+        });
+
+        layout.addComponent(projectNameField);
+
         addButton = new Button("Добавить риск");
         addFromDBButton = new Button("Предложить риски");
         layout.setSizeUndefined();
-        addButton.setWidth("80%");
-        addFromDBButton.setWidth("80%");
+        addButton.setWidth("100%");
+        addFromDBButton.setWidth("100%");
 
         layout.addComponent(addButton);
         layout.addComponent(addFromDBButton);
         setCompositionRoot(layout);
+
 
         addButton.addClickListener(event -> {navigator.navigateTo("AddForm");});
 

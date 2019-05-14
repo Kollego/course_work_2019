@@ -6,10 +6,12 @@ import com.vaadin.addon.charts.model.style.SolidColor;
 import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.backend.Risk;
 import com.vaadin.data.provider.DataProvider;
+import com.vaadin.data.provider.GridSortOrder;
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.shared.ui.slider.SliderOrientation;
 import com.vaadin.ui.*;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 
 public class RiskMap extends HorizontalLayout {
@@ -39,6 +41,7 @@ public class RiskMap extends HorizontalLayout {
             addChart();
             refreshChart();
             refreshGrid();
+            grid.setSortOrder(GridSortOrder.desc(grid.getColumn("level")));
         });
         slider = new Slider(1, 100);
         slider.setOrientation(SliderOrientation.VERTICAL);
@@ -55,17 +58,23 @@ public class RiskMap extends HorizontalLayout {
 
         grid = new Grid<>(Risk.class);
 
-        grid.setWidth("100%");
+
+        grid.setWidth("98%");
         grid.setHeight("100%");
-        grid.setCaption("Критические риски");
 
         for(Grid.Column c: grid.getColumns())
         {
             c.setResizable(false);
         }
 
-        addComponent(grid);
-        setExpandRatio(grid, 6);
+        VerticalLayout layoutGrid = new VerticalLayout();
+        Label l = new Label("Критические риски в порядке убывания уровня");
+        l.setStyleName(ValoTheme.LABEL_H3);
+        layoutGrid.addComponent(l);
+        layoutGrid.addComponent(grid);
+        layoutGrid.setMargin(false);
+        addComponent(layoutGrid);
+        setExpandRatio(layoutGrid, 6);
 
 
 
@@ -87,6 +96,8 @@ public class RiskMap extends HorizontalLayout {
         grid.addColumn("level").setCaption("Уровень риска");
 
         dataProvider.setFilter(risk -> filterRisk(risk));
+
+
 
     }
 
