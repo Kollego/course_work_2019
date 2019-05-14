@@ -91,8 +91,14 @@ public class RiskMap extends HorizontalLayout {
     }
 
     private boolean filterRisk(Risk risk){
-        if(risk.getLevel() >= slider.getValue()) return true;
-        else return false;
+        if(risk.getLevel() >= slider.getValue()) {
+            risk.setisCritical("Да");
+            return true;
+        }
+        else{
+            risk.setisCritical("Нет");
+            return false;
+        }
     }
 
     public void addChart(){
