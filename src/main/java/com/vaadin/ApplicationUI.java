@@ -1,5 +1,6 @@
 package com.vaadin;
 
+import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 
@@ -9,6 +10,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import javax.servlet.annotation.WebServlet;
 
+@Title("RiskApp")
 public class ApplicationUI extends UI {
 
     private VerticalLayout layout;
