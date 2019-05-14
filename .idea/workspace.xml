@@ -4,11 +4,8 @@
     <list default="true" id="6c5018c4-105d-47b9-ac57-1b5a565bb7fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vaadin/backend/DataProviderHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vaadin/backend/DataProviderHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vaadin/components/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vaadin/components/Header.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vaadin/components/init/InitControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vaadin/components/init/InitControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI$MyUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI$MyUIServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,14 +25,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+            <state relative-caret-position="273">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/ApplicationUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -67,12 +82,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/training/framework/exercises/ex3/MainLayout.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/training/framework/exercises/ex2/ApplicationLayout.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/backend/Risk.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/components/Header.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/backend/DataProviderHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/components/init/InitControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskReport.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vaadin/ApplicationUI.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -191,6 +207,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="RemoteServers" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="Deployment: course_work_2019" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -204,7 +227,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Heroku Deployment.Deployment: course_work_2019">
     <configuration name="exercises-layout [jetty:run]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -230,6 +253,20 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="Deployment: course_work_2019" type="heroku-deploy" factoryName="Heroku Deployment" server-name="Heroku">
+      <deployment type="module" name="exercises-layout">
+        <settings>
+          <option name="defaultDeploymentName" value="false" />
+          <option name="deploymentName" value="hse-risk-app" />
+          <option name="host" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Heroku Deployment.Deployment: course_work_2019" />
+      <item itemvalue="Maven.exercises-layout [jetty:run]" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -244,7 +281,7 @@
       <workItem from="1557154695141" duration="7159000" />
       <workItem from="1557244685708" duration="2097000" />
       <workItem from="1557493458257" duration="948000" />
-      <workItem from="1557789927521" duration="13518000" />
+      <workItem from="1557789927521" duration="18428000" />
     </task>
     <task id="LOCAL-00001" summary="RiskMap changes">
       <created>1557793617998</created>
@@ -260,11 +297,39 @@
       <option name="project" value="LOCAL" />
       <updated>1557795969285</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="some changes">
+      <created>1557803812455</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557803812455</updated>
+    </task>
+    <task id="LOCAL-00004" summary="title change">
+      <created>1557804018642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1557804018642</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Deploy">
+      <created>1557809884428</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557809884428</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Deploy">
+      <created>1557811171849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1557811171849</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23722000" />
+    <option name="totallyTimeSpent" value="28632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -279,7 +344,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25704697" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25704697" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -287,9 +352,10 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Application Servers" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22521247" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22521247" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -318,7 +384,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="RiskMap changes" />
     <MESSAGE value="RiskReport changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="RiskReport changes" />
+    <MESSAGE value="some changes" />
+    <MESSAGE value="title change" />
+    <MESSAGE value="Deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/8.5.1/vaadin-server-8.5.1-sources.jar!/com/vaadin/ui/Panel.java">
@@ -336,13 +405,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/training/framework/exercises/MainView.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/training/framework/exercises/ex3/views/FirstView.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/training/framework/exercises/ex2/ApplicationLayout.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskAssess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="987">
@@ -423,11 +485,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/components/RiskReport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
+        <state relative-caret-position="273">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vaadin/ApplicationUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
         </state>
       </provider>
     </entry>
