@@ -94,11 +94,6 @@
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-maven-plugin</artifactId>
 				<version>${vaadin.plugin.version}</version>
-				<configuration>
-					<extraJvmArgs>
-						-Dvaadin.charts.developer.license=c21174b1-d3f8-420c-9102-72e89d76c8d7 package
-					</extraJvmArgs>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>

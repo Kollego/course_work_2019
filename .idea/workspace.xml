@@ -4,8 +4,6 @@
     <list default="true" id="6c5018c4-105d-47b9-ac57-1b5a565bb7fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI$MyUIServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI$MyUIServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vaadin/ApplicationUI.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="321">
-              <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+              <caret line="98" column="95" selection-start-line="98" selection-start-column="95" selection-end-line="98" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -227,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Heroku Deployment.Deployment: course_work_2019">
+  <component name="RunManager" selected="Maven.exercises-layout [jetty:run]">
     <configuration name="exercises-layout [jetty:run]" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -281,7 +279,7 @@
       <workItem from="1557154695141" duration="7159000" />
       <workItem from="1557244685708" duration="2097000" />
       <workItem from="1557493458257" duration="948000" />
-      <workItem from="1557789927521" duration="18428000" />
+      <workItem from="1557789927521" duration="18675000" />
     </task>
     <task id="LOCAL-00001" summary="RiskMap changes">
       <created>1557793617998</created>
@@ -325,11 +323,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557811171849</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Deploy">
+      <created>1557811304330</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557811304330</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28632000" />
+    <option name="totallyTimeSpent" value="28879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,10 +357,10 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Application Servers" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22521247" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22521247" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -503,7 +508,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
-          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+          <caret line="98" column="95" selection-start-line="98" selection-start-column="95" selection-end-line="98" selection-end-column="95" />
         </state>
       </provider>
     </entry>
