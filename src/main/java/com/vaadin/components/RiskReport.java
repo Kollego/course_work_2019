@@ -85,6 +85,8 @@ public class RiskReport extends VerticalLayout {
         grid.addColumn("impact").setCaption("Воздействие").setExpandRatio(2);
         grid.addColumn("level").setCaption("Уровень риска").setExpandRatio(1);
         grid.addColumn("isCritical").setCaption("Критический риск").setExpandRatio(2);
+        grid.addColumn("responsible").setCaption("Ответственный").setExpandRatio(1);
+        grid.addColumn("category").setCaption("Категория").setExpandRatio(1);
 
     }
 }
