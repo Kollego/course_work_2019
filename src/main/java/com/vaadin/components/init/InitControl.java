@@ -31,6 +31,11 @@ public class InitControl extends VerticalLayout implements View {
 
         addComponent(projectNameField);
 */
+        Label tA = new Label();
+        tA.setValue("Для редактирования названия дважды нажмите на него");
+        tA.setWidth("230px");
+        tA.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
+        addComponent(tA);
         addButton = new Button("Добавить риск");
         addButton.setIcon(VaadinIcons.FILE_ADD);
         addButton.setStyleName(ValoTheme.BUTTON_LARGE);
@@ -43,12 +48,7 @@ public class InitControl extends VerticalLayout implements View {
 
         addComponent(addButton);
         addComponent(addFromDBButton);
-        TextArea tA = new TextArea();
-        tA.setValue("Для редактирования названия дважды нажмите на него");
-        tA.setHeight("86px");
-        tA.setWidth("100%");
-        tA.setEnabled(false);
-        addComponent(tA);
+
 
         addButton.addClickListener(event -> {navigator.navigateTo("AddForm");});
         addFromDBButton.addClickListener(event -> navigator.navigateTo("AddDB"));

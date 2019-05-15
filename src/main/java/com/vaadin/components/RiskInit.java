@@ -88,5 +88,6 @@ public class RiskInit extends HorizontalLayout {
         navigator.addView("br", new BuisnessRisks(navigator));
         navigator.addView("tr", new TechRisks(navigator));
         navigator.addView("or", new OrgRisks(navigator));
+        navigator.addView("pr", new ProjRisks(navigator));
     }
 }
