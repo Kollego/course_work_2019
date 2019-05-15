@@ -56,23 +56,35 @@ public class RiskReport extends VerticalLayout {
 
     private void addGrid() {
         grid = new Grid<>(Risk.class);
+        grid.setRowHeight(80);
         addComponent(grid);
         grid.setWidth("100%");
 
         grid.setDataProvider(DataProviderHelper.getDataProvider());
         grid.removeAllColumns();
         grid.addColumn("id").setCaption("№").setExpandRatio(1);
-        grid.addColumn("name").setCaption("Название").setExpandRatio(12);
-        grid.addColumn("description").setCaption("Описание").setExpandRatio(12);
+        grid.addComponentColumn(risk -> {
+            Label label = new Label();
+            label.setValue(risk.getName());
+            label.setWidth("280px");
+            label.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
+            return label;
+        })
+                .setCaption("Название")
+                .setWidth(290);
+        grid.addComponentColumn(risk -> {
+            Label label = new Label();
+            label.setValue(risk.getDescription());
+            label.setWidth("280px");
+            label.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
+            return label;
+        })
+                .setCaption("Описание")
+                .setWidth(290);
         grid.addColumn("probability").setCaption("Вероятность").setExpandRatio(2);
         grid.addColumn("impact").setCaption("Воздействие").setExpandRatio(2);
         grid.addColumn("level").setCaption("Уровень риска").setExpandRatio(1);
         grid.addColumn("isCritical").setCaption("Критический риск").setExpandRatio(2);
 
-
-        for(Grid.Column c: grid.getColumns())
-        {
-            c.setResizable(false);
-        }
     }
 }

@@ -15,6 +15,7 @@ com\vaadin\components\RiskResp.class
 com\vaadin\ApplicationUI.class
 com\vaadin\ApplicationUI$MyUIServlet.class
 com\vaadin\components\asses\EditPanel.class
+com\vaadin\components\init\ProjRisks.class
 com\vaadin\components\init\TechRisks.class
 com\vaadin\backend\Risk.class
 com\vaadin\components\init\BuisnessRisks.class

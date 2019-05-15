@@ -85,11 +85,18 @@ public class RiskMap extends HorizontalLayout {
         grid.setDataProvider(dataProvider);
 
         grid.removeAllColumns();
+        grid.setRowHeight(110);
 
         grid.addColumn("id").setCaption("№");
-        grid.addColumn("name")
+        grid.addComponentColumn(risk -> {
+            Label label = new Label();
+            label.setValue(risk.getName());
+            label.setWidth("215px");
+            label.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
+            return label;
+        })
                 .setCaption("Название")
-                .setExpandRatio(1);
+                .setWidth(220);
         grid.addColumn("probability").setCaption("Вероятность");
         grid.addColumn("impact").setCaption("Воздействие");
         grid.addColumn("level").setCaption("Уровень риска");

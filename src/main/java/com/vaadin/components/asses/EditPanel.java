@@ -10,7 +10,8 @@ public class EditPanel extends Panel {
 
     VerticalLayout layout;
     Risk risk;
-    TextArea name;
+    Label name;
+    TextArea descArea;
 
     public EditPanel(){
         layout = new VerticalLayout();
@@ -18,9 +19,10 @@ public class EditPanel extends Panel {
         Label label = new Label("Для редактирования выберете риск из таблицы");
         label.setStyleName(ValoTheme.LABEL_H3);
         layout.addComponent(label);
-        name = new TextArea();
-        name.setEnabled(false);
+        name = new Label();
+        name.setWidth("200px");
         name.setWidth("100%");
+        name.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
 
 
 
@@ -28,9 +30,9 @@ public class EditPanel extends Panel {
 
         Slider slider1 = new Slider(1, 10);
         Slider slider2 = new Slider(1,10);
-        TextArea descArea = new TextArea("Описание риска");
+        descArea = new TextArea("Описание риска");
 
-        name.addValueChangeListener(event -> {
+        descArea.addValueChangeListener(event -> {
             if(risk != null) {
                 if(risk.getProbability() != null){
                     slider1.setValue(risk.getProbability().doubleValue());
@@ -45,10 +47,10 @@ public class EditPanel extends Panel {
                     slider2.setValue(1d);
                 }
                 if(risk.getDescription() != null){
-                    descArea.setValue(risk.getDescription());
+                    name.setValue(risk.getName());
                 }
                 else{
-                    descArea.setValue("");
+                    name.setValue("");
                 }
             }
         });
@@ -85,6 +87,6 @@ public class EditPanel extends Panel {
 
     public void setRisk(Risk risk) {
         this.risk = risk;
-        name.setValue(risk.getName());
+        descArea.setValue(risk.getDescription());
     }
 }

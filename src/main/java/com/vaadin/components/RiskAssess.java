@@ -5,7 +5,9 @@ import com.vaadin.backend.Risk;
 import com.vaadin.components.asses.EditPanel;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 import java.util.Optional;
 
@@ -48,7 +50,7 @@ public class RiskAssess extends HorizontalLayout {
         grid.addColumn("id").setCaption("№");
         grid.addColumn("name")
                 .setCaption("Название")
-                .setExpandRatio(1);
+                .setWidth(360);
         grid.addColumn("probability").setCaption("Вероятность");
         grid.addColumn("impact").setCaption("Воздействие");
         grid.addColumn("level").setCaption("Уровень риска");
@@ -57,6 +59,7 @@ public class RiskAssess extends HorizontalLayout {
         {
             c.setResizable(false);
         }
+        
     }
 
 }
