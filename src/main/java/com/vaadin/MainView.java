@@ -1,5 +1,6 @@
 package com.vaadin;
 
+import com.vaadin.backend.DBRisk;
 import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.components.*;
 import com.vaadin.navigator.View;
@@ -22,7 +23,7 @@ public class MainView extends VerticalLayout implements View {
 
 		TabSheet tabs =  new TabSheet();
 		addComponent(tabs);
-		tabs.setWidth("85%");
+		tabs.setWidth("90%");
 		setComponentAlignment(tabs, Alignment.TOP_CENTER);
 
 		RiskInit riskInit = new RiskInit();
@@ -37,6 +38,7 @@ public class MainView extends VerticalLayout implements View {
 		RiskReport riskReport = new RiskReport();
 		tabs.addTab(riskReport, "Отчет");
 
+		DBRisk.loadRisks();
 	}
 
 

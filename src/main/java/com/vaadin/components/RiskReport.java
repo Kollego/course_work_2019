@@ -12,12 +12,16 @@ import org.vaadin.haijian.Exporter;
 
 public class RiskReport extends VerticalLayout {
 
-    Grid<Risk> grid;
-    Label labelName;
+    private Grid<Risk> grid;
+    private Label labelName;
+    private String projectName;
+    private StreamResource excelStreamResource;
+    private StreamResource csvStreamResource;
 
     public RiskReport(){
         HorizontalLayout layout = new HorizontalLayout();
         labelName = new Label("Отчет по проекту");
+
         labelName.setStyleName(ValoTheme.LABEL_H3);
         layout.addComponent(labelName);
         Button downloadAsExcel = new Button("Скачать Excel");
@@ -32,13 +36,13 @@ public class RiskReport extends VerticalLayout {
         addComponent(layout);
         addGrid();
 
-        StreamResource excelStreamResource = new StreamResource((StreamResource.StreamSource) () -> Exporter.exportAsExcel(grid),
-                DataProviderHelper.getProjectName() + ".xlsx");
+        excelStreamResource = new StreamResource((StreamResource.StreamSource) () -> Exporter.exportAsExcel(grid),
+                 "risk_report.xlsx");
         FileDownloader excelFileDownloader = new FileDownloader(excelStreamResource);
         excelFileDownloader.extend(downloadAsExcel);
 
-        StreamResource csvStreamResource = new StreamResource((StreamResource.StreamSource) () -> Exporter.exportAsCSV(grid),
-                DataProviderHelper.getProjectName() + ".csv");
+        csvStreamResource = new StreamResource((StreamResource.StreamSource) () -> Exporter.exportAsCSV(grid),
+                "risk_report.csv");
         FileDownloader csvFileDownloader = new FileDownloader(csvStreamResource);
         csvFileDownloader.extend(downloadAsCSV);
 
@@ -47,6 +51,8 @@ public class RiskReport extends VerticalLayout {
         layout.setComponentAlignment(downloadAsExcel, Alignment.TOP_RIGHT);
 
     }
+
+
 
     private void addGrid() {
         grid = new Grid<>(Risk.class);

@@ -24,6 +24,12 @@ public class Risk {
         id = DataProviderHelper.getRiskCount() + 1;
     }
 
+    public Risk(String name, String description) {
+        this.name = name;
+        this.description = description;
+        id = DataProviderHelper.getRiskCount() + 1;
+    }
+
     public Risk() {
     }
 

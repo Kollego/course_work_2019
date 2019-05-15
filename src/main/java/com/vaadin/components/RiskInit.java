@@ -2,7 +2,9 @@ package com.vaadin.components;
 
 import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.backend.Risk;
+import com.vaadin.components.init.AddDB;
 import com.vaadin.components.init.AddForm;
+import com.vaadin.components.init.BuisnessRisks;
 import com.vaadin.components.init.InitControl;
 import com.vaadin.data.Binder;
 import com.vaadin.data.Binder.Binding;
@@ -22,6 +24,8 @@ public class RiskInit extends HorizontalLayout {
         setSizeFull();
         panelForControl = new Panel();
         addComponent(panelForControl);
+        panelForControl.setWidth("100%");
+
 
         navigator = new Navigator(UI.getCurrent(), panelForControl);
         registerViews();
@@ -67,7 +71,7 @@ public class RiskInit extends HorizontalLayout {
             c.setResizable(false);
         }
         grid.setSizeFull();
-        setExpandRatio(panelForControl, 1.5f);
+        setExpandRatio(panelForControl, 1);
         setExpandRatio(grid,3);
         setHeight("500px");
         panelForControl.setHeight("100%");
@@ -81,5 +85,7 @@ public class RiskInit extends HorizontalLayout {
     private void registerViews(){
         navigator.addView("AddForm", new AddForm(navigator));
         navigator.addView("Controls", new InitControl(navigator));
+        navigator.addView("AddDB", new AddDB(navigator));
+        navigator.addView("br", new BuisnessRisks(navigator));
     }
 }

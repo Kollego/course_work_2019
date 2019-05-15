@@ -3,15 +3,19 @@ package com.vaadin.backend;
 import java.util.ArrayList;
 
 public class DBRisk {
-    static ArrayList<PossibleRisk> risks;
+    private static ArrayList<PossibleRisk> risks;
+
+    public static ArrayList<PossibleRisk> getRisks() {
+        return risks;
+    }
 
     public static void loadRisks(){
         risks = new ArrayList<>();
 
         /**
-         * 1 - внешние риски
+         * 1 - внешние риски (5 - аут, 6 -зак, 7 -общ)
          * 2 - технологические
-         * 3 - организационные
+         * 3 - о    рганизационные
          * 4 - проектные
          */
 
@@ -42,10 +46,11 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск выбора партнера/консультанта из-за недочета всех параметров",
                         "Риск необъективного выбора консультанта, который предопределяет серьезные осложнения в ходе выполнения проекта или даже его провал"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(5);
 
         risks.add(new PossibleRisk("Риск выбора продукта из-за недочета всех параметров",
                         "Риск необъективного выбора продукта, который не сможет соответствовать всем потребностям бизнеса"));
-        risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).setType(4);
 
         risks.add(new PossibleRisk("Риск неверно реализованной архитектуры из-за недочета всех пареметров",
                         "Риск неверно реализованной, недостаточно гибкой архитектуры, которая не будет покрывать все потенциальные бизнес-процессы"));
@@ -66,6 +71,7 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск задержки сроков из-за опаздывания поставщиков",
                         "Отставание по графику на разных этапах проекта"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(5);
 
         risks.add(new PossibleRisk("Риск превышения бюджета из-за увеличения стоимости сторонних лицензий",
                         "Увеличение количества затраченных на проект средств"));
@@ -82,6 +88,7 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск потери информации о проекте из-за стихийного бедствия",
                         "Потеря всех документов, касающихся проекта"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(7);
 
         risks.add(new PossibleRisk("Риск длительной обработки изменений требований из-за отсутствия методологии",
                         "Каждое изменение требований обрабатывается значительное время"));
@@ -90,10 +97,12 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск прерывания финансирования из-за вмешательства гос. органов",
                         "Деньги перестали поступать на расчетный счет или операции с расчетным счетом невозможны"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(7);
 
         risks.add(new PossibleRisk("Риск потери прибыли от проекта из-за изменения налоговой базы",
                         "Вынужденное закрытие проекта, отказ от выполнения проекта из-за неполучения прибыли"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(7);
 
         risks.add(new PossibleRisk("Риск невозможности получения информации от заказчика из-за препятствования сотрудников",
                         "Закрытие проекта, расторжение контракта"));
@@ -121,6 +130,7 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск срыва сроков проекта из-за задержки сроков финансирования проекта заказчиком",
                         "Руководство компании не обеспечивает проект своевременным финансированием, постоянные задержки связанные с ожиданием поступления средств."));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(6);
         risks.add(new PossibleRisk("Риск увеличения стоимости проекта из-за неверной оценки стоимости проекта",
                         "Необходимость постоянной переоценки стоимости проекта, много времени уходит на обсуждение целесообразности финансирования  "));
         risks.get(risks.size()-1).setType(4);
@@ -166,6 +176,7 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск несоблюдения контрактных обязательств подрядчиками",
                         "Срыв срока поставки системы заказчику, перерасход бюджета проекта"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(5);
         risks.add(new PossibleRisk("Риск возникновения сложностей при интеграции системы в инфраструктуру заказчика",
                         "Срыв срока поставки системы заказчику, перерасход бюджета проекта"));
         risks.get(risks.size()-1).setType(2);
@@ -190,6 +201,7 @@ public class DBRisk {
         risks.add(new PossibleRisk("Риск банкротства предприятия из-за экономического кризиса",
                         "Предприятие, затронутое экономическим кризисом, объявляет о банкротстве"));
         risks.get(risks.size()-1).setType(1);
+        risks.get(risks.size()-1).addCriteria(7);
     }
 
 }

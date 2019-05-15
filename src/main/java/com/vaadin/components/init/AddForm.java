@@ -8,9 +8,8 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
 
-public class AddForm extends CustomComponent implements View {
-
-    VerticalLayout layout;
+public class AddForm extends VerticalLayout implements View {
+    
     TextArea name;
     Button save;
     Button cancel;
@@ -18,27 +17,27 @@ public class AddForm extends CustomComponent implements View {
 
     public AddForm(Navigator navigator)
     {
+        setWidth("100%");
         createElements();
         this.navigator = navigator;
     }
 
     void createElements()
     {
-        layout = new VerticalLayout();
-        layout.setMargin(true);
+        setMargin(true);
         name = new TextArea("Название");
-        layout.addComponent(name);
+        addComponent(name);
         name.setWidth("100%");
         save = new Button("Сохранить");
         save.setStyleName(ValoTheme.BUTTON_FRIENDLY);
-        cancel = new Button("Отмена");
+        cancel = new Button("Назад");
         cancel.setStyleName(ValoTheme.BUTTON_DANGER);
         HorizontalLayout controls = new HorizontalLayout(save, cancel);
-        layout.addComponent(controls);
+        addComponent(controls);
         controls.setWidth("100%");
         controls.setExpandRatio(cancel, 1);
         controls.setComponentAlignment(cancel, Alignment.TOP_RIGHT);
-        setCompositionRoot(layout);
+
 
         configureElements();
 

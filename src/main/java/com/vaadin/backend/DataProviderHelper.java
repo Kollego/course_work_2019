@@ -15,7 +15,6 @@ public class DataProviderHelper {
     public static void InitProvider(){
         listOfRisk = new ArrayList<>();
 
-        listOfRisk.add(new Risk(1, "a", "a", 1, 1));
         RiskDataProvider = DataProvider.ofCollection(listOfRisk);
     }
     public static ListDataProvider<Risk> getDataProvider(){
@@ -25,6 +24,11 @@ public class DataProviderHelper {
     public static void addRisk(String name) {
 
         listOfRisk.add(new Risk(name));
+        RiskDataProvider.refreshAll();
+    }
+    public static void addRisk(String name, String description) {
+
+        listOfRisk.add(new Risk(name, description));
         RiskDataProvider.refreshAll();
     }
 

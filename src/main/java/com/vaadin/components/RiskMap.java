@@ -78,7 +78,6 @@ public class RiskMap extends HorizontalLayout {
 
 
 
-
     }
 
     public void refreshGrid(){
