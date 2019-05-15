@@ -9,28 +9,28 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import java.util.ArrayList;
 
-public class TechRisks extends VerticalLayout implements View {
+public class OrgRisks extends VerticalLayout implements View {
 
     Navigator navigator;
 
-    public TechRisks(Navigator navigator) {
+    public OrgRisks(Navigator navigator) {
         this.navigator = navigator;
-        Label l = new Label("Технологические риски");
+        Label l = new Label("Организационные риски");
         l.setStyleName(ValoTheme.LABEL_H3);
         addComponent(l);
         RadioButtonGroup<String> r1 = new RadioButtonGroup<>();
         r1.setItems("Да", "Нет");
-        r1.setCaption("Часто ли Вы проводите анализ качества продукции?");
+        r1.setCaption("Сильно ли сжаты сроки разработки?");
         addComponent(r1);
 
         Slider s1 = new Slider(1,3);
-        s1.setCaption("Cложность использования выбранных технологий (1-3):");
+        s1.setCaption("Сплоченность коллектива (1-3):");
         s1.setWidth("100%");
         s1.setValue(2d);
         addComponent(s1);
 
         Slider s2 = new Slider(1,3);
-        s2.setCaption("Профессионализм команды разработчиков (1-3):");
+        s2.setCaption("Трудовой стаж менеджера (1-3):");
         s2.setWidth("100%");
         s2.setValue(2d);
         addComponent(s2);
@@ -53,8 +53,8 @@ public class TechRisks extends VerticalLayout implements View {
 
         save.addClickListener(event -> {
             conf.clear();
-            conf.add(2);
-            if (r1.getValue() == "Нет") conf.add(5);
+            conf.add(3);
+            if (r1.getValue() == "Да") conf.add(5);
             conf.add(5 + s1.getValue().intValue());
             conf.add(8 + s2.getValue().intValue());
             navigator.navigateTo("Controls");
@@ -69,4 +69,3 @@ public class TechRisks extends VerticalLayout implements View {
     }
 
 }
-

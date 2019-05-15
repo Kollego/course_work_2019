@@ -14,6 +14,7 @@ public class DBHandler {
                         DataProviderHelper.addRisk(risk.getName(), risk.getDescription());
                         risk.setUsed(true);
                         count++;
+                        break;
                     }
                 }
             }

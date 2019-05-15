@@ -2,10 +2,7 @@ package com.vaadin.components;
 
 import com.vaadin.backend.DataProviderHelper;
 import com.vaadin.backend.Risk;
-import com.vaadin.components.init.AddDB;
-import com.vaadin.components.init.AddForm;
-import com.vaadin.components.init.BuisnessRisks;
-import com.vaadin.components.init.InitControl;
+import com.vaadin.components.init.*;
 import com.vaadin.data.Binder;
 import com.vaadin.data.Binder.Binding;
 import com.vaadin.icons.VaadinIcons;
@@ -35,7 +32,18 @@ public class RiskInit extends HorizontalLayout {
         grid.setDataProvider(DataProviderHelper.getDataProvider());
         addComponent(grid);
         grid.removeAllColumns();
-        grid.addColumn("id").setCaption("№");
+
+        grid.addComponentColumn(risk -> {
+            Button button = new Button("");
+            button.addClickListener(click ->
+                    DataProviderHelper.removeRisk(risk));
+            button.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
+            button.setIcon(VaadinIcons.TRASH);
+            button.setHeight("30px");
+            return button;
+        }).setExpandRatio(1);
+
+        grid.addColumn("id").setCaption("№").setExpandRatio(1);
         //grid.addColumn("name").setCaption("Название").setExpandRatio(1);
 
         TextArea textArea = new TextArea();
@@ -48,7 +56,7 @@ public class RiskInit extends HorizontalLayout {
 
         Grid.Column<Risk, String> column = grid.addColumn(
                 risk -> risk.getName());
-        column.setExpandRatio(1);
+        column.setExpandRatio(24);
         column.setCaption("Название");
         column.setEditorBinding(riskBinding);
 
@@ -56,22 +64,13 @@ public class RiskInit extends HorizontalLayout {
         grid.getEditor().setEnabled(true);
         grid.setSelectionMode(Grid.SelectionMode.SINGLE);
 
-        grid.addComponentColumn(risk -> {
-            Button button = new Button("");
-            button.addClickListener(click ->
-                    DataProviderHelper.removeRisk(risk));
-            button.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
-            button.setIcon(VaadinIcons.TRASH);
-            button.setHeight("30px");
-            return button;
-        });
 
         for(Grid.Column c: grid.getColumns())
         {
             c.setResizable(false);
         }
         grid.setSizeFull();
-        setExpandRatio(panelForControl, 1);
+        setExpandRatio(panelForControl, 1.2f);
         setExpandRatio(grid,3);
         setHeight("500px");
         panelForControl.setHeight("100%");
@@ -87,5 +86,7 @@ public class RiskInit extends HorizontalLayout {
         navigator.addView("Controls", new InitControl(navigator));
         navigator.addView("AddDB", new AddDB(navigator));
         navigator.addView("br", new BuisnessRisks(navigator));
+        navigator.addView("tr", new TechRisks(navigator));
+        navigator.addView("or", new OrgRisks(navigator));
     }
 }

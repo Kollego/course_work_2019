@@ -41,8 +41,6 @@ public class BuisnessRisks extends VerticalLayout implements View {
 
         ArrayList<Integer> conf = new ArrayList<>();
 
-
-
         save.addClickListener(event -> {
             conf.clear();
             conf.add(1);

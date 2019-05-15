@@ -36,10 +36,13 @@ public class AddDB extends VerticalLayout implements View {
         buisBut.addClickListener(event -> navigator.navigateTo("br"));
         techBut = new Button("Технологические");
         techBut.setIcon(VaadinIcons.HAMMER);
+        techBut.addClickListener(event -> navigator.navigateTo("tr"));
         orgBut =  new Button("Организационные");
         orgBut.setIcon(VaadinIcons.USERS);
+        orgBut.addClickListener(event -> navigator.navigateTo("or"));
         projBut = new Button("Проектные");
         projBut.setIcon(VaadinIcons.TASKS);
+        projBut.addClickListener(event -> navigator.navigateTo("pr"));
         arBut = new ArrayList<>();
         arBut.add(buisBut);
         arBut.add(techBut);
