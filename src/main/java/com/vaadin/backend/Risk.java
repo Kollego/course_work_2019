@@ -5,15 +5,15 @@ public class Risk {
     private int id;
     private String name = "";
     private String description = "";
-    private Integer probability = 0;
-    private Integer impact = 0;
-    private Integer level;
+    private Double probability;
+    private Double impact;
+    private Double level;
     private String isCritical = "";
     private String responsible = "";
     private String category = "";
 
 
-    public Risk(int id, String name, String description, int probability, int impact) {
+    public Risk(int id, String name, String description, double probability, double impact) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -67,30 +67,30 @@ public class Risk {
         this.description = description;
     }
 
-    public Integer getProbability() {
+    public Double getProbability() {
         return probability;
     }
 
-    public void setProbability(Integer probability) {
+    public void setProbability(Double probability) {
         this.probability = probability;
     }
 
-    public Integer getImpact() {
+    public Double getImpact() {
         return impact;
     }
 
-    public void setImpact(Integer impact) {
+    public void setImpact(Double impact) {
         this.impact = impact;
     }
 
-    public Integer getLevel() {
+    public Double getLevel() {
         if(impact != null && probability != null)
             return impact*probability;
         else
-            return 0;
+            return 0d;
     }
 
-    public void setLevel(Integer level) {this.level = level;}
+    public void setLevel(Double level) {this.level = level;}
 
     public String getisCritical() { return isCritical; }
 

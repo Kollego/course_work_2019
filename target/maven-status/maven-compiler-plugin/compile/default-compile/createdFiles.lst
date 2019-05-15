@@ -4,6 +4,7 @@ com\vaadin\backend\DBRisk.class
 com\vaadin\backend\DBHandler.class
 com\vaadin\components\init\AddForm.class
 com\vaadin\components\RiskAssess.class
+com\vaadin\components\init\EditForm.class
 com\vaadin\components\init\OrgRisks.class
 com\vaadin\backend\PossibleRisk.class
 com\vaadin\components\init\AddDB.class

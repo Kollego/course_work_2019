@@ -48,12 +48,12 @@ public class DataProviderHelper {
         }
     }
 
-    public static void changeProb(Risk risk, int prob){
+    public static void changeProb(Risk risk, double prob){
         risk.setProbability(prob);
         RiskDataProvider.refreshAll();
     }
 
-    public static void changeImp(Risk risk, int imp){
+    public static void changeImp(Risk risk, double imp){
         risk.setImpact(imp);
         RiskDataProvider.refreshAll();
     }

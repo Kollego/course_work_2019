@@ -28,23 +28,27 @@ public class EditPanel extends Panel {
 
         layout.addComponent(name);
 
-        Slider slider1 = new Slider(1, 10);
-        Slider slider2 = new Slider(1,10);
+        Slider slider1 = new Slider(0, 1, 1);
+        slider1.setEnabled(false);
+        Slider slider2 = new Slider(0,1,1);
+        slider2.setEnabled(false);
         descArea = new TextArea("Описание риска");
 
         descArea.addValueChangeListener(event -> {
+            slider1.setEnabled(true);
+            slider2.setEnabled(true);
             if(risk != null) {
                 if(risk.getProbability() != null){
-                    slider1.setValue(risk.getProbability().doubleValue());
+                    slider1.setValue(risk.getProbability());
                 }
                 else{
-                    slider1.setValue(1d);
+                    slider1.setValue(0d);
                 }
                 if(risk.getImpact() != null){
-                    slider2.setValue(risk.getImpact().doubleValue());
+                    slider2.setValue(risk.getImpact());
                 }
                 else{
-                    slider2.setValue(1d);
+                    slider2.setValue(0d);
                 }
                 if(risk.getDescription() != null){
                     name.setValue(risk.getName());
@@ -55,8 +59,8 @@ public class EditPanel extends Panel {
             }
         });
         HorizontalLayout sliderLayout = new HorizontalLayout();
-        VerticalLayout vl1 = new VerticalLayout(new Label("Вероятность (1..10)"), slider1);
-        VerticalLayout vl2 = new VerticalLayout(new Label("Воздействие (1..10)"), slider2);
+        VerticalLayout vl1 = new VerticalLayout(new Label("Вероятность (0..1)"), slider1);
+        VerticalLayout vl2 = new VerticalLayout(new Label("Воздействие (0..1)"), slider2);
         vl1.setExpandRatio(slider1,1);
         vl2.setExpandRatio(slider2,1);
         sliderLayout.setWidth("100%");
@@ -70,11 +74,11 @@ public class EditPanel extends Panel {
         layout.addComponent(sliderLayout);
 
         slider1.addValueChangeListener(event -> {
-           if(risk != null) DataProviderHelper.changeProb(risk, event.getValue().intValue());
+           if(risk != null) DataProviderHelper.changeProb(risk, event.getValue());
         });
 
         slider2.addValueChangeListener(event -> {
-            if(risk != null) DataProviderHelper.changeImp(risk, event.getValue().intValue());
+            if(risk != null) DataProviderHelper.changeImp(risk, event.getValue());
         });
 
         layout.addComponent(descArea);

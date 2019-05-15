@@ -14,6 +14,9 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.themes.ValoTheme;
 
+import java.util.ArrayList;
+
+
 public class RiskMap extends HorizontalLayout {
 
     private Chart chart;
@@ -21,8 +24,11 @@ public class RiskMap extends HorizontalLayout {
     private Panel panel;
     private Grid<Risk> grid;
     private ListDataProvider<Risk> dataProvider;
+    private String[][] dots;
 
     public RiskMap(){
+
+
         setWidth("100%");
 
         panel = new Panel();
@@ -43,14 +49,18 @@ public class RiskMap extends HorizontalLayout {
             refreshGrid();
             grid.setSortOrder(GridSortOrder.desc(grid.getColumn("level")));
         });
-        slider = new Slider(1, 100);
+        slider = new Slider(0, 1, 2);
         slider.setOrientation(SliderOrientation.VERTICAL);
         slider.setHeight("100%");
 
         layout.addComponent(slider);
         layout.setExpandRatio(slider, 1);
-        slider.setValue(50d);
+        slider.setValue(0.5);
         slider.setDescription("Изменить границу зоны критических рисков");
+
+        Label sliderV = new Label("0.5");
+        slider.addValueChangeListener(event -> {sliderV.setValue(event.getValue().toString());});
+        layout.addComponent(sliderV);
 
         addComponent(layout);
         setExpandRatio(layout, 1);
@@ -140,7 +150,8 @@ public class RiskMap extends HorizontalLayout {
         XAxis xAxis = new XAxis();
         xAxis.setTitle("Вероятность");
         xAxis.setMin(0);
-        xAxis.setMax(10);
+        xAxis.setMax(1);
+        xAxis.setTickInterval(0.1);
         xAxis.setAllowDecimals(false);
         Labels xlabels = xAxis.getLabels();
         xlabels.setStep(1);
@@ -149,8 +160,9 @@ public class RiskMap extends HorizontalLayout {
 
         YAxis yAxis = new YAxis();
         yAxis.setTitle("Воздействие");
-        yAxis.setMin(1);
-        yAxis.setMax(10);
+        yAxis.setMin(0);
+        yAxis.setMax(1);
+        yAxis.setTickInterval(0.1);
         Labels ylabels = yAxis.getLabels();
         ylabels.setStep(1);
         yAxis.setLabels(ylabels);
@@ -167,13 +179,36 @@ public class RiskMap extends HorizontalLayout {
         DataSeries series = new DataSeries();
         series.setName("Риски");
 
+        dots = new String[12][12];
+        for(int i=0; i<= 10; i++){
+            for(int j=0; j<= 10; j++){
+                dots[i][j] = "";
+            }
+        }
+
         for(Risk risk: DataProviderHelper.getListOfRisk()){
-            DataSeriesItem point = new DataSeriesItem(risk.getProbability(), risk.getImpact());
-            Marker marker = new Marker();
-            marker.setRadius(10);
-            point.setMarker(marker);
-            point.setName(String.valueOf(risk.getId()));
-            series.add(point);
+            if(risk.getProbability() == null || risk.getImpact() == null)
+                continue;
+            if(dots[(int)(risk.getProbability()*10)][(int)(risk.getImpact()*10)] == "") {
+                dots[(int)(risk.getProbability()*10)][(int)(risk.getImpact()*10)] = String.valueOf(risk.getId());
+            }
+            else{
+                dots[(int)(risk.getProbability()*10)][(int)(risk.getImpact()*10)] += ", " + risk.getId();
+            }
+        }
+        for(int i=0; i<= 10; i++){
+            for(int j=0; j<= 10; j++){
+               if(dots[i][j] != "")
+               {
+                   DataSeriesItem point = new DataSeriesItem((double)(i)/10d, (double)(j)/10d);
+                   Marker marker = new Marker();
+                   marker.setRadius(10);
+                   point.setMarker(marker);
+                   point.setName(dots[i][j]);
+                   series.add(point);
+               }
+
+            }
         }
 
 
@@ -183,30 +218,25 @@ public class RiskMap extends HorizontalLayout {
         plotOptionsPolygon.setColor(new SolidColor("#ff7062"));
         polygon.setPlotOptions(plotOptionsPolygon);
         polygon.setName("Зона критических рисков");
-        int sliderValue = slider.getValue().intValue();
-        for(int i=1; i<=10; i++){
-            int j = sliderValue/i;
-            if(i * j < sliderValue) j++;
-            if(j <= 10) {
-                if(i == 1)
-                    polygon.add(new DataSeriesItem(i, 10));
-                polygon.add(new DataSeriesItem(i, j));
+        double sliderValue = slider.getValue();
+        if(sliderValue != 0d) {
+            for (double i = 0.01; i <= 1; i += 0.01) {
 
-            }
-            else {
-                int jj = sliderValue/(i+1);
-                if((i+1) * jj < sliderValue) jj++;
-                if(jj < 10){
-                    polygon.add(new DataSeriesItem(i+1, 10));
+                double j = sliderValue / i;
+                j *= 10000;
+                j = Math.round(j);
+                j /= 10000;
+                if (j <= 1) {
+                    polygon.add(new DataSeriesItem(i, j));
                 }
             }
         }
-        if(sliderValue > 90)
+        if(sliderValue > 0.9)
         {
-            polygon.add(new DataSeriesItem(9.5, 10));
-            polygon.add(new DataSeriesItem(10, 9.5));
+            polygon.add(new DataSeriesItem(0.95, 1));
+            polygon.add(new DataSeriesItem(1, 0.95));
         }
-        polygon.add(new DataSeriesItem(10,10));
+        polygon.add(new DataSeriesItem(1,1));
         conf.addSeries(polygon);
 
         conf.addSeries(series);
