@@ -31,6 +31,11 @@ public class DataProviderHelper {
         listOfRisk.add(new Risk(name, description));
         RiskDataProvider.refreshAll();
     }
+    public static void addRisk(String name, String description, String responsible, String category) {
+
+        listOfRisk.add(new Risk(name, description, responsible, category));
+        RiskDataProvider.refreshAll();
+    }
 
     public static void removeRisk(Risk risk){
         listOfRisk.remove(risk);

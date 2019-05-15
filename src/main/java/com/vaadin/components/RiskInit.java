@@ -41,12 +41,14 @@ public class RiskInit extends HorizontalLayout {
             button.setIcon(VaadinIcons.TRASH);
             button.setHeight("30px");
             return button;
-        }).setExpandRatio(1);
+        }).setWidth(75);
 
-        grid.addColumn("id").setCaption("№").setExpandRatio(1);
+
+
+        grid.addColumn("id").setCaption("№").setWidth(60);
         //grid.addColumn("name").setCaption("Название").setExpandRatio(1);
 
-        TextArea textArea = new TextArea();
+        /*TextArea textArea = new TextArea();
         textArea.setWidth("80%");
 
         Binder<Risk> binder = grid.getEditor().getBinder();
@@ -62,9 +64,30 @@ public class RiskInit extends HorizontalLayout {
 
 
         grid.getEditor().setEnabled(true);
-        grid.setSelectionMode(Grid.SelectionMode.SINGLE);
+        grid.setSelectionMode(Grid.SelectionMode.SINGLE);*/
 
+        grid.addComponentColumn(risk -> {
+            Label label = new Label();
+            label.setValue(risk.getName());
+            label.setWidth("390px");
+            label.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
+            return label;
+        })      .setCaption("Название")
+                .setWidth(400);
+        grid.addColumn("responsible").setCaption("Ответственный");
+        grid.addColumn("category").setCaption("Категория");
+        grid.addComponentColumn(risk -> {
+           Button editButton = new Button();
+           editButton.setIcon(VaadinIcons.EDIT);
+           editButton.setStyleName(ValoTheme.BUTTON_ICON_ONLY);
+           editButton.addClickListener(event -> {
+              EditForm.setRisk(risk);
+              navigator.navigateTo("EditForm");
+           });
+           return editButton;
+        });
 
+        grid.setRowHeight(72);
         for(Grid.Column c: grid.getColumns())
         {
             c.setResizable(false);
@@ -89,5 +112,6 @@ public class RiskInit extends HorizontalLayout {
         navigator.addView("tr", new TechRisks(navigator));
         navigator.addView("or", new OrgRisks(navigator));
         navigator.addView("pr", new ProjRisks(navigator));
+        navigator.addView("EditForm", new EditForm(navigator));
     }
 }

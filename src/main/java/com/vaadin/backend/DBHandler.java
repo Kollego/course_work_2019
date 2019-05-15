@@ -11,7 +11,7 @@ public class DBHandler {
             if(risk.getType() == conf.get(0) && !risk.isUsed()){
                 for(Integer k: risk.criteria){
                     if(conf.contains(k)){
-                        DataProviderHelper.addRisk(risk.getName(), risk.getDescription());
+                        DataProviderHelper.addRisk(risk.getName(), risk.getDescription(), "", getCategory(risk.getType()));
                         risk.setUsed(true);
                         count++;
                         break;
@@ -20,5 +20,19 @@ public class DBHandler {
             }
         }
         return count;
+    }
+    public static String getCategory(int c){
+        switch (c){
+            case 1:
+                return "Внешний";
+            case 2:
+                return "Технологический";
+            case 3:
+                return "Организационный";
+            case 4:
+                return "Проектный";
+            default:
+                return "";
+        }
     }
 }

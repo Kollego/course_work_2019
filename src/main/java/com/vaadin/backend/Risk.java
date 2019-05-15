@@ -3,12 +3,14 @@ package com.vaadin.backend;
 
 public class Risk {
     private int id;
-    private String name;
-    private String description;
-    private Integer probability;
-    private Integer impact;
+    private String name = "";
+    private String description = "";
+    private Integer probability = 0;
+    private Integer impact = 0;
     private Integer level;
-    private String isCritical;
+    private String isCritical = "";
+    private String responsible = "";
+    private String category = "";
 
 
     public Risk(int id, String name, String description, int probability, int impact) {
@@ -27,6 +29,14 @@ public class Risk {
     public Risk(String name, String description) {
         this.name = name;
         this.description = description;
+        id = DataProviderHelper.getRiskCount() + 1;
+    }
+
+    public Risk(String name, String description, String responsible, String category) {
+        this.name = name;
+        this.description = description;
+        this.responsible = responsible;
+        this.category = category;
         id = DataProviderHelper.getRiskCount() + 1;
     }
 
@@ -86,4 +96,19 @@ public class Risk {
 
     public void setisCritical(String critical) { isCritical = critical; }
 
+    public String getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(String responsible) {
+        this.responsible = responsible;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

@@ -31,15 +31,10 @@ public class InitControl extends VerticalLayout implements View {
 
         addComponent(projectNameField);
 */
-        Label tA = new Label();
-        tA.setValue("Для редактирования названия дважды нажмите на него");
-        tA.setWidth("230px");
-        tA.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
-        addComponent(tA);
-        addButton = new Button("Добавить риск");
+        addButton = new Button("Добавить новый риск");
         addButton.setIcon(VaadinIcons.FILE_ADD);
         addButton.setStyleName(ValoTheme.BUTTON_LARGE);
-        addFromDBButton = new Button("Предложить риски");
+        addFromDBButton = new Button("Загрузить риски из базы");
         addFromDBButton.setIcon(VaadinIcons.FILE_SEARCH);
         addFromDBButton.setStyleName(ValoTheme.BUTTON_LARGE);
         setSizeUndefined();

@@ -11,8 +11,12 @@ import com.vaadin.ui.themes.ValoTheme;
 public class AddForm extends VerticalLayout implements View {
     
     TextArea name;
+    TextArea description;
     Button save;
     Button cancel;
+    TextField responsible;
+    NativeSelect<String> category;
+
     Navigator navigator;
 
     public AddForm(Navigator navigator)
@@ -26,8 +30,21 @@ public class AddForm extends VerticalLayout implements View {
     {
         setMargin(true);
         name = new TextArea("Название");
+
         addComponent(name);
+        description = new TextArea("Описание");
+        addComponent(description);
         name.setWidth("100%");
+        name.setHeight("98px");
+        description.setWidth("100%");
+        description.setHeight("110px");
+        responsible = new TextField("Ответсвенный за риск");
+        addComponent(responsible);
+        responsible.setWidth("100%");
+        category = new NativeSelect<>("Категория риска");
+        category.setItems("Внешний", "Технологический", "Организационный", "Проектный");
+        category.setWidth("100%");
+        addComponent(category);
         save = new Button("Сохранить");
         save.setStyleName(ValoTheme.BUTTON_FRIENDLY);
         cancel = new Button("Назад");
@@ -47,15 +64,18 @@ public class AddForm extends VerticalLayout implements View {
     private void configureElements()
     {
         save.addClickListener(event -> {
-            if(!name.isEmpty())
+            if(!name.isEmpty() || !description.isEmpty())
             {
-                DataProviderHelper.addRisk(name.getValue());
+                DataProviderHelper.addRisk(name.getValue(), description.getValue(),
+                        responsible.getValue(), category.getValue());
                 name.setValue("");
+                description.setValue("");
+
                 navigator.navigateTo("Controls");
             }
             else
             {
-                Notification.show("Необходимо название!");
+                Notification.show("Необходимо заполнить поля названия и описания!");
             }
         });
     }
